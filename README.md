@@ -151,7 +151,11 @@ This plugin has been tested with:
  - Jdk 1.8.
 
 
-### **Made with     ![Imgur](https://i.imgur.com/bEqxO1y.png)     By: **
+### **Made with     
+
+![Imgur](https://i.imgur.com/bEqxO1y.png)    
+
+By: **
 ## The **Psybit** core team:
 
 
