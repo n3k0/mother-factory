@@ -142,10 +142,7 @@ putting on the debug flag in maven (-X) in order to find the reason.
 
 Finally, the changes will be reflected as follows, in the `${testSourceDirectory}` folder:
 
-<p align="center">
-  <img src="https://i.imgur.com/KixLfPg.png" />
-</p>
-
+![Imgur](https://i.imgur.com/KixLfPg.png)
 
 This plugin has been tested with:
 
@@ -154,13 +151,7 @@ This plugin has been tested with:
  - Jdk 1.8.
 
 
-### **Made with     
-
-<p align="center">
-  <img src="https://i.imgur.com/bEqxO1y.png" />
-</p>
-
-By: **
+### **Made with     ![Imgur](https://i.imgur.com/bEqxO1y.png)     By: **
 ## The **Psybit** core team:
 
 
