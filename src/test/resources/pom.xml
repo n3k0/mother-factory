@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>org.test.groupid</groupId>
+	<artifactId>test-artifactid</artifactId>
+	<version>1.1.0-SNAPSHOT</version>
+	<packaging>jar</packaging>
+	<name>test-artifactid</name>
+
+	<dependencies>
+
+	</dependencies>
+
+	<build>
+		<finalName>${project.artifactId}</finalName>
+		<plugins>
+			<plugin>
+				<groupId>net.psybit.factory</groupId>
+				<artifactId>mother-factory</artifactId>
+				<version>0.0.1-SNAPSHOT</version>
+				<configuration>
+					<!-- <testSourceDirectory>${project.build.testSourceDirectory}</testSourceDirectory> -->
+					<testSourceDirectory>src/test/java</testSourceDirectory>
+					<!-- <outputDirectory>${project.build.outputDirectory}</outputDirectory> -->
+					<outputDirectory>target/test-classes</outputDirectory>
+
+					<basePkg>custom.pkg</basePkg>
+
+					<pojoPkgs>
+						<pojoPkg>first.dto</pojoPkg>
+						<pojoPkg>second.dto</pojoPkg>
+					</pojoPkgs>
+
+					<factoryPkgs>
+						<factoryPkg>first</factoryPkg>
+						<factoryPkg>second</factoryPkg>
+					</factoryPkgs>
+
+					<factoryNames>
+						<factoryName>FirstFactory</factoryName>
+						<factoryName>SecondFactory</factoryName>
+					</factoryNames>
+
+					<fileFilterExclusions>
+						<fileFilterExclusion>FirstClass</fileFilterExclusion>
+						<fileFilterExclusion>SecondCriteria.class</fileFilterExclusion>
+					</fileFilterExclusions>
+
+					<canIHazFidder>false</canIHazFidder>
+
+					<stringsLength>100</stringsLength>
+					<integerLimit>100</integerLimit>
+					<floatPointFromLimit>9.5</floatPointFromLimit>
+					<floatPointToLimit>100.3</floatPointToLimit>
+					<dataStructureSize>10</dataStructureSize>
+
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>
