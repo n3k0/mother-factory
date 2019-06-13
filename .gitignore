@@ -1,8 +1,8 @@
 .project
 .classpath
 .settings
-.sh
-.bat
+*.sh
+*.bat
 target
 bin
 test-output
