@@ -56,12 +56,13 @@ Add the corresponding `<plugin>` tag in the `<plugins>` section, like this:
 
 
 
-For the following parameters, the example values will be:
+For the following example, the configuration values will be:
 
 > `com.company.application.external.pojo`
-
+<br/>
 > `com.company.application.internal.entities`
-
+<br/>
+> `com.company.application.nested`
 
 
 - **pojoPackages**: Taking the last example, the pojo packages should be external.pojo, and internal.entities, separated by **pojoPackage** tag, just as:
@@ -69,13 +70,15 @@ For the following parameters, the example values will be:
         <pojoPackages>
             <pojoPackage>com.company.application.external.pojo</pojoPackage>
     	    <pojoPackage>com.company.application.internal.entities</pojoPackage>
+    	    <pojoPackage>com.company.application.nested</pojoPackage>
         </pojoPackages>`
 
 - **factoryQualifiedNames**: This parameter indicates the target qualified name of the factories:
 
 	    <factoryQualifiedNames>
-		    <factoryQualifiedName>com.company.application.external.ExternalFactory</factoryQualifiedName>
-		    <factoryQualifiedName>com.company.application.internal.InternalFactory</factoryQualifiedName>
+		    <factoryQualifiedName>com.company.application.external.FactoryForPojos</factoryQualifiedName>
+		    <factoryQualifiedName>com.company.application.internal.FactoryForEntities</factoryQualifiedName>
+		    <factoryQualifiedName>com.company.application.nested.NestedFactory</factoryQualifiedName>
 	    </factoryQualifiedNames>
 
 
@@ -128,6 +131,10 @@ If the value is false,  the result will be:
 - **simpleFidderCreateMethodName**: Don´t you like the *create* method name in the SimpleFidder class? If a value is set to this parameter, the name of the *create* method will be changed. Note: Just if *canIHazFidder* is set as true.
 
 ** I hope the last parameters `stringsLength, integerLimit, floatPointFromLimit, floatPointToLimit, dataStructureSize` are self explanatory ;-)
+
+The common way to invoke the awesome mother factory plugin is as easy as follows
+
+	mvn compile mother-factory:gen
 
 As you can see, all of the configuration tags are optional, you can set the plugin like this:
 
