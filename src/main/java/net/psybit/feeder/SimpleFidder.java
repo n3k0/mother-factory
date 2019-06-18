@@ -231,10 +231,13 @@ public class SimpleFidder {
 		}
 		else if (klazz.isEnum()) {
 			Object[] enumValues = klazz.getEnumConstants();
-			if (enumValues == null || enumValues.length == 0) {
+
+			if (enumValues != null && enumValues.length > 0) {
+				return (T) enumValues[RANDOM.nextInt(enumValues.length)];
+			}
+			else {
 				return (T) (klazz.getSimpleName() + ".values()[0]");
 			}
-			return (T) enumValues[RANDOM.nextInt(enumValues.length)];
 		}
 		else if (klazz.isArray()) {
 			Class<?> componentType = klazz.getComponentType();

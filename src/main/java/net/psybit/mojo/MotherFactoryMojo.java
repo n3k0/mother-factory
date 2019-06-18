@@ -157,20 +157,19 @@ public class MotherFactoryMojo extends AbstractMojo {
 
 				String factoryQualifiedName = this.factoryQualifiedNames.get(i);
 				int separator = factoryQualifiedName.lastIndexOf(Constants.DOT_CHAR);
-				String factoryPackageSegment = factoryQualifiedName.substring(0, separator);
-				String factoryNameSegment = factoryQualifiedName.substring(separator + 1,
-						factoryQualifiedName.length());
+
 				String pojoPackage = null;
+				String factoryPackageSegment = factoryQualifiedName.substring(0, separator);
+				String factoryNameSegment = null;
 
-				if (testSourceDirectory.getPath().equals(factoryPackageSegment)) {
-					factoryPackageSegment = Constants.EMPTY_SPACE;
-				}
-
-				if (outputDirectory.getPath().equals(this.pojoPackages.get(i))) {
+				if (factoryQualifiedName.endsWith(Constants.FACTORY_DEFAULT_NAME)) {
 					pojoPackage = Constants.EMPTY_SPACE;
+					factoryPackageSegment = Constants.EMPTY_SPACE;
+					factoryNameSegment = Constants.FACTORY_DEFAULT_NAME;
 				}
 				else {
-					pojoPackage = container.getPojoPackage();
+					pojoPackage = this.pojoPackages.get(i);
+					factoryNameSegment = factoryQualifiedName.substring(separator + 1, factoryQualifiedName.length());
 				}
 
 				container.setFactoryPackage(factoryPackageSegment);

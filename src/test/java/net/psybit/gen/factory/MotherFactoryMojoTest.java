@@ -6,7 +6,6 @@ import java.util.regex.Pattern;
 import org.apache.maven.plugin.testing.AbstractMojoTestCase;
 import org.codehaus.plexus.PlexusTestCase;
 import org.testng.Assert;
-import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 
 import net.psybit.mojo.MotherFactoryMojo;
@@ -16,10 +15,9 @@ import net.psybit.utils.PathUtils;
  * This test is useless as we need a project apart because the classpath in a test is
  * not read in the same way as a real project, added just to illustrate a mojo test
  */
-@Ignore
-public class MotherFactoryMojoTest extends AbstractMojoTestCase{
+public class MotherFactoryMojoTest extends AbstractMojoTestCase {
 
-	@Test
+	@Test(enabled = false)
 	public void shouldExecuteMojo() throws Exception {
 		String baseDir = PlexusTestCase.getBasedir();
 

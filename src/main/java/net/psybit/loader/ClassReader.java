@@ -12,6 +12,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.maven.artifact.DependencyResolutionRequiredException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -50,7 +51,7 @@ public class ClassReader {
 		URLClassLoader classLoader = generateCompoundClassLoader();
 
 		File pojoTargetClassFolder = mojoContainer.getPojoTargetClassFolder();
-		String pojoTargetClassFolderPath = pojoTargetClassFolder.getPath().concat(Constants.SLASH);
+		String outputDirectory = this.mojoSettings.getOutputDirectory().getPath().concat(Constants.SLASH);
 
 		FileFilter fileFilter = new CustomFileFilter(mojoSettings.getFileFilterInclusions(),
 				mojoSettings.getFileFilterExclusions());
@@ -63,23 +64,24 @@ public class ClassReader {
 
 			for (File fileClass : fileClasses) {
 
-				String canonicalPath = fileClass.getAbsolutePath().replace(pojoTargetClassFolderPath,
-						Constants.EMPTY_SPACE);
-				String pkg = canonicalPath.replaceAll(Constants.SLASH_REGEX, Constants.DOT);
-				String className = pkg.substring(pkg.indexOf(mojoContainer.getPojoPackage())).replace(Constants.CLASS_SUFFIX,
-						Constants.EMPTY_SPACE);
+				String path = fileClass.getParent().replace(outputDirectory, Constants.EMPTY_SPACE);
 
-				Class<?> classDefinition;
+				String pkg = path.replaceAll(Constants.SLASH_REGEX, Constants.DOT);
 
-				try {
-					classDefinition = classLoader.loadClass(className);
+				if (StringUtils.isNotBlank(pkg)) {
+					String className = pkg.concat(Constants.DOT)
+							.concat(fileClass.getName().replace(Constants.CLASS_SUFFIX, Constants.EMPTY_SPACE));
 
-					Constants.projectClasses().add(classDefinition);
-					
-					LOGGER.debug("Added class >>> {}", className);
-				}
-				catch (ClassNotFoundException e) {
-					LOGGER.error("Class not found >>> {}", className);
+					try {
+						Class<?> klazz = classLoader.loadClass(className);
+
+						Constants.projectClasses().add(klazz);
+
+						LOGGER.debug("Added class >>> {}", className);
+					}
+					catch (ClassNotFoundException e) {
+						LOGGER.error("Class not found >>> {}", className);
+					}
 				}
 			}
 		}

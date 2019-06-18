@@ -15,7 +15,7 @@ public class Container {
 	private String factoryName;
 
 	private File pojoTargetClassFolder;
-	private File pojoTargetClassFile;
+	private File pojoTargetClassFile;//<<<< ver si se usa si no alv:
 
 	private File factorySrcTestFolder;
 

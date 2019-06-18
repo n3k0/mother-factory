@@ -106,15 +106,16 @@ public class FactoryCoder {
 
 					if (ParameterizedType.class.isAssignableFrom(field.getGenericType().getClass())) {
 						ParameterizedType parameterizedType = (ParameterizedType) field.getGenericType();
-
 						Type[] types = parameterizedType.getActualTypeArguments();
 
-						Type typeOne = types[0];
-						genericTypeClassOne = (Class<?>) typeOne;
-
 						if (types.length > 1) {
+							genericTypeClassOne = (Class<?>)types[1];
+							
 							Type typeTwo = parameterizedType.getActualTypeArguments()[1];
-							genericTypeClassTwo = (Class<?>) typeTwo;
+							genericTypeClassTwo = (Class<?>)typeTwo;
+						}
+						else {
+							genericTypeClassOne = (Class<?>)types[0];
 						}
 					}
 

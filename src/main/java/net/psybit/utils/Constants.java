@@ -28,6 +28,7 @@ public class Constants {
 	public static final CharSequence CLASS_SUFFIX = ".class";
 
 	private static final Set<Class<?>> PROJECT_CLASSES = Collections.synchronizedSet(new HashSet<Class<?>>());
+	public static final String FACTORY_DEFAULT_NAME = "FatFactory";
 	
 	public static Set<Class<?>> projectClasses(){
 		return PROJECT_CLASSES;
