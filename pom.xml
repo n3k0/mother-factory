@@ -9,7 +9,7 @@
 
 	<groupId>net.psybit.factory</groupId>
 	<artifactId>mother-factory</artifactId>
-	<version>0.5.5</version>
+	<version>0.5.6-SNAPSHOT</version>
 	<packaging>maven-plugin</packaging>
 
 	<name>mother-factory generator Maven Plugin</name>
